@@ -1,0 +1,64 @@
+; ions.mdp - used as input into grompp to generate ions.tpr
+; Parameters describing what to do, when to stop and what to save
+integrator  = md            ; Algorithm (md = molecular dynamics)
+;emtol       = 100.0        ; Stop minimization when the maximum force < 1000.0 kJ/mol/nm
+;emstep      = 0.01         ; Minimization step size
+nsteps       = 45000000    ; Maximum number of (md) steps to perform
+init-step    = 2070000000 
+dt           = 0.0016       ; 1 fs
+nstxtcout               = 6250      ; save energies every 20.0 ps
+nstenergy               = 625       ; save energies every 1.0 ps
+nstlog                  = 625       ; update log file every 1.0 ps
+nstcalcenergy           = 25
+; Parameters describing how to find the neighbors of each atom and how to calculate the interactions
+nstlist         = 50        ; Frequency to update the neighbor list and long range forces
+cutoff-scheme   = Verlet    ; Buffered neighbor searching
+;ns_type         = grid      ; Method to determine neighbor list (simple, grid)
+verlet-buffer-tolerance = 5.e-03
+comm-mode                = Linear
+nstcomm                  = 25
+comm-grps                = Protein  Solvent
+coulombtype     = PME       ; PME Treatment of long range electrostatic interactions
+coulomb-modifier = Potential-shift-Verlet
+rcoulomb-switch = 1.0
+rcoulomb        = 1.2       ; Short-range electrostatic cut-off
+rvdw            = 1.2       ; Short-range Van der Waals cut-off
+rvdw-switch = 1.0
+; Periodic boundary conditions
+pbc             = xyz       ; Periodic Boundary Conditions in all 3 dimensions
+constraints = h-bonds
+vdwtype = cutoff
+vdw-modifier = force-switch
+;rlist = 1.25
+DispCorr = no
+constraint-algorithm = LINCS
+lincs_iter              = 2         ; accuracy of LINCS
+lincs_order             = 4         ; also related to accuracy
+pme_order                = 4
+fourierspacing          = 0.12
+
+; Temperature coupling is on
+tcoupl                  = V-rescale             ; modified Berendsen thermostat
+tc-grps                 = Protein Solvent       ;Protein Non-Protein   ; two coupling groups - more accurate
+tau_t                   = 0.5     0.5           ; time constant, in ps
+ref_t                   = 310     310           ; reference temperature, one for each group, in K
+; Pressure coupling is off
+;pcoupl                  = no        ; no pressure coupling in NVT
+pcoupl                  = Parrinello-Rahman     ; Pressure coupling on in NPT
+pcoupltype              = isotropic             ; uniform scaling of box vectors
+tau_p                   = 10.0                   ; time constant, in ps
+ref_p                   = 1.0                   ; reference pressure, in bar
+compressibility         = 4.5e-5                ; isothermal compressibility of water, bar^-1
+refcoord_scaling        = com
+; Velocity generation
+gen_vel                 = no        ; assign velocities from Maxwell distribution
+gen_temp                = 310       ; temperature for Maxwell distribution
+gen_seed                = 1001      ; generate a random seed
+; SIMULATED ANNEALING CONTROL =
+;annealing = single single
+annealing = no no
+annealing-npoints = 2 2
+annealing-time = 0 1000 0 1000   ; all first group all second group ps
+annealing-temp = 10 300 10 300   ; all temp all first group all second group
+
+
