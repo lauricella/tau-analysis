@@ -1,6 +1,6 @@
 # tau-analysis
 
-The repository contains the alanysis of the structures:
+The repository contains the analysis of the structures:
 
  - Monomer
  - Dimer
