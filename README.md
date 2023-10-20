@@ -14,3 +14,5 @@ Each folder contains two sub-directories with the bias factor equal to:
  - Bias factor 16
 
 To download the trajectory xtc files or the HILLS files press the html files to start the download!
+Water molecules have been removed from the trajectory files to save space.
+Plumed.dat and md.mdp files were upload to keep trace of the simulation details. 
