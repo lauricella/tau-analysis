@@ -1,6 +1,6 @@
 # tau-analysis
 
-The repository contains the analysis of the structures in Juoyter notebook files (.ipynb):
+The repository contains the analysis of the structures in Jupyter notebook files (.ipynb):
  
  - Monomer
  - Dimer
