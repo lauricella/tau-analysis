@@ -1,7 +1,7 @@
 # tau-analysis
 
-The repository contains the analysis of the structures:
-
+The repository contains the analysis of the structures in Juoyter notebook files (.ipynb):
+ 
  - Monomer
  - Dimer
  - Trimer
