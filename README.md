@@ -20,4 +20,4 @@ Plumed.dat and md.mdp files were upload to keep trace of the simulation details.
 
 # UPDATE 2026
 
-The dataset updated in 2026 (i.e., the content of the `DATA` folder in our internal archive) is available in this repository under the `update_2026/` directory.
+The dataset updated in 2026 is available in this repository under the `update_2026/` directory.
